@@ -6,219 +6,568 @@
 -->
 <html>
 	<head>
-		<title>About me, my portfolio</title>
+		<title>Shhreya Anand - ML Engineer & Quant Researcher</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Custom styles for streamlined design */
+			#top-nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background: rgba(25, 25, 25, 0.95);
+				backdrop-filter: blur(10px);
+				z-index: 10000;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+			}
+			
+			#top-nav .logo {
+				font-size: 1.5rem;
+				font-weight: 900;
+				color: #ffffff;
+				text-decoration: none;
+			}
+			
+			#top-nav .nav-links {
+				display: flex;
+				gap: 2rem;
+				align-items: center;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			#top-nav .nav-links li a {
+				color: #ffffff;
+				text-decoration: none;
+				font-weight: 600;
+				transition: color 0.3s;
+			}
+			
+			#top-nav .nav-links li a:hover {
+				color: #18bfef;
+			}
+			
+			#top-nav .nav-links li.active a {
+				color: #18bfef;
+			}
+			
+			#top-nav .contact-btn {
+				background: #18bfef;
+				color: #ffffff;
+				padding: 0.5rem 1.5rem;
+				border-radius: 5px;
+				text-decoration: none;
+				font-weight: 600;
+				transition: background 0.3s;
+			}
+			
+			#top-nav .contact-btn:hover {
+				background: #0ea5e9;
+			}
+			
+			.profile-container {
+				text-align: center;
+				margin: 120px auto 40px;
+				padding: 2rem;
+			}
+			
+			.profile-picture {
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 5px solid #18bfef;
+				box-shadow: 0 5px 20px rgba(24, 191, 239, 0.3);
+				margin-bottom: 2rem;
+			}
+			
+			.hero-section {
+				text-align: center;
+				padding: 3rem 2rem;
+				max-width: 900px;
+				margin: 0 auto 4rem;
+			}
+			
+			.hero-section h1 {
+				font-size: 3rem;
+				margin-bottom: 1.5rem;
+				line-height: 1.2;
+			}
+			
+			.hero-section .intro-text {
+				font-size: 1.25rem;
+				line-height: 1.8;
+				margin-bottom: 2.5rem;
+				color: #777;
+			}
+			
+			.cta-buttons {
+				display: flex;
+				gap: 1.5rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			
+			.cta-buttons .button {
+				padding: 1rem 2.5rem;
+				font-size: 1.1rem;
+			}
+			
+			.section-header {
+				text-align: center;
+				margin: 4rem 0 3rem;
+			}
+			
+			.section-header h2 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+			}
+			
+			.current-work {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin: 3rem 0;
+				max-width: 1200px;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 0 2rem;
+			}
+			
+			.work-card {
+				background: #252525;
+				padding: 2rem;
+				border-radius: 10px;
+				border: 1px solid #333;
+				transition: transform 0.3s, box-shadow 0.3s;
+			}
+			
+			.work-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 30px rgba(24, 191, 239, 0.2);
+			}
+			
+			.work-card h3 {
+				color: #18bfef;
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+			}
+			
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2rem;
+				margin: 3rem 0;
+				max-width: 1200px;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 0 2rem;
+			}
+			
+			.project-card {
+				background: #252525;
+				padding: 2rem;
+				border-radius: 10px;
+				border: 1px solid #333;
+				transition: transform 0.3s, box-shadow 0.3s;
+			}
+			
+			.project-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 30px rgba(24, 191, 239, 0.2);
+			}
+			
+			.project-card h3 {
+				color: #18bfef;
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+			}
+			
+			.tech-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				margin-top: 1rem;
+			}
+			
+			.tech-tag {
+				background: #18bfef;
+				color: #ffffff;
+				padding: 0.3rem 0.8rem;
+				border-radius: 20px;
+				font-size: 0.85rem;
+				font-weight: 600;
+			}
+			
+			.stats-section {
+				background: linear-gradient(135deg, #18bfef 0%, #0ea5e9 100%);
+				padding: 4rem 2rem;
+				margin: 4rem 0;
+				border-radius: 10px;
+			}
+			
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 2rem;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			
+			.stat-item {
+				text-align: center;
+				color: #ffffff;
+			}
+			
+			.stat-number {
+				font-size: 3rem;
+				font-weight: 900;
+				margin-bottom: 0.5rem;
+				display: block;
+			}
+			
+			.stat-label {
+				font-size: 1.1rem;
+				opacity: 0.9;
+			}
+			
+			.writing-section {
+				max-width: 900px;
+				margin: 3rem auto;
+				padding: 0 2rem;
+			}
+			
+			.writing-item {
+				background: #252525;
+				padding: 2rem;
+				border-radius: 10px;
+				margin-bottom: 1.5rem;
+				border-left: 4px solid #18bfef;
+				transition: transform 0.3s;
+			}
+			
+			.writing-item:hover {
+				transform: translateX(10px);
+			}
+			
+			.writing-item h3 {
+				color: #18bfef;
+				margin-bottom: 0.5rem;
+			}
+			
+			.social-links-footer {
+				display: flex;
+				justify-content: center;
+				gap: 2rem;
+				margin: 2rem 0;
+			}
+			
+			.social-links-footer a {
+				font-size: 2rem;
+				color: #18bfef;
+				transition: transform 0.3s, color 0.3s;
+				text-decoration: none;
+			}
+			
+			.social-links-footer a:hover {
+				transform: scale(1.2);
+				color: #0ea5e9;
+			}
+			
+			.email-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: #18bfef;
+				font-size: 1.2rem;
+				text-decoration: none;
+				margin-top: 1rem;
+			}
+			
+			.email-link:hover {
+				color: #0ea5e9;
+			}
+			
+			@media screen and (max-width: 768px) {
+				#top-nav {
+					flex-direction: column;
+					gap: 1rem;
+					padding: 1rem;
+				}
+				
+				#top-nav .nav-links {
+					flex-wrap: wrap;
+					gap: 1rem;
+					justify-content: center;
+				}
+				
+				.hero-section h1 {
+					font-size: 2rem;
+				}
+				
+				.profile-picture {
+					width: 150px;
+					height: 150px;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
+		<!-- Top Navigation Bar -->
+		<nav id="top-nav">
+			<a href="index.html" class="logo">SHHREYA ANAND</a>
+			<ul class="nav-links">
+				<li class="active"><a href="index.html">Home</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#experience">Experience</a></li>
+				<li><a href="#research">Research</a></li>
+				<li><a href="generic.html">About</a></li>
+				<li><a href="https://blog.shhreya-anand.github.io" target="_blank">Blog</a></li>
+				<li><a href="#contact" class="contact-btn">Contact Me</a></li>
+			</ul>
+		</nav>
+
 		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+		<div id="wrapper" class="fade-in">
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Hi, I'm Shhreya!</h1>
-						<p>I'm an Honours student studying <strong>Computer Science</strong> and <strong>Mathematics</strong> with a concentration in <strong> Statistics and Data Science </strong>
-							(phew that was a lot) 
+			<!-- Profile Picture -->
+			<div class="profile-container">
+				<img src="images/Profile.JPG" alt="Shhreya Anand" class="profile-picture" />
+			</div>
 
-						<p> My work lies at the intersection of Applied AI (VLMs, Reinfrocement learning, Optimisation), Software engineering (Full-stack, distributed systems), and Data engineering (modelling involving Statistics). 
-						
+			<!-- Hero Section -->
+			<section class="hero-section">
+				<h1>Machine Learning Engineer & Quantitative Researcher</h1>
+				<p class="intro-text">
+					I'm an Honours student studying <strong>Computer Science</strong> and <strong>Mathematics</strong> with a concentration in <strong>Statistics and Data Science</strong>. 
+					My work lies at the intersection of Applied AI (VLMs, Reinforcement Learning, Optimization), Software Engineering (Full-stack, Distributed Systems), 
+					and Data Engineering (Statistical Modeling).
+				</p>
+				<div class="cta-buttons">
+					<a href="#projects" class="button large">View Projects</a>
+					<a href="#research" class="button large">Read My Research</a>
+				</div>
+			</section>
+
+			<!-- Main Content -->
+			<div id="main">
+
+				<!-- Current Work Section -->
+				<section id="experience">
+					<div class="section-header">
+						<h2>Current Work</h2>
+						<p>What I'm working on right now</p>
+					</div>
+					<div class="current-work">
+						<div class="work-card">
+							<h3>Micron Technology - ML Engineering Intern</h3>
+							<p>
+								Developing advanced machine learning solutions for semiconductor manufacturing optimization. 
+								Working on edge deployment of Vision Language Models (VLMs) achieving 8x inference speedup 
+								through model optimization and efficient deployment strategies.
+							</p>
+						</div>
+						<div class="work-card">
+							<h3>MAIF - Quantitative Research</h3>
+							<p>
+								Conducting quantitative research in reinforcement learning for portfolio optimization. 
+								Developed RL-based trading strategies achieving 56% annualized returns through advanced 
+								algorithmic trading and risk management techniques.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Featured Projects Section -->
+				<section id="projects">
+					<div class="section-header">
+						<h2>Featured Projects</h2>
+						<p>Highlighting my best work</p>
+					</div>
+					<div class="projects-grid">
+						<article class="project-card">
+							<header>
+								<h3>RL Portfolio Optimization</h3>
+							</header>
+							<p>
+								Developed a reinforcement learning framework for dynamic portfolio optimization that adapts 
+								to changing market conditions in real-time. The system uses deep Q-learning to optimize 
+								asset allocation strategies, achieving 56% annualized returns with controlled risk metrics.
+							</p>
+							<div class="tech-tags">
+								<span class="tech-tag">Python</span>
+								<span class="tech-tag">Reinforcement Learning</span>
+								<span class="tech-tag">TensorFlow</span>
+								<span class="tech-tag">Quantitative Finance</span>
+							</div>
+						</article>
+						<article class="project-card">
+							<header>
+								<h3>VLM Edge Deployment</h3>
+							</header>
+							<p>
+								Optimized Vision Language Models for edge device deployment, implementing model quantization, 
+								pruning, and efficient inference pipelines. Achieved 8x speedup in inference time while 
+								maintaining model accuracy, enabling real-time VLM applications on resource-constrained devices.
+							</p>
+							<div class="tech-tags">
+								<span class="tech-tag">PyTorch</span>
+								<span class="tech-tag">Computer Vision</span>
+								<span class="tech-tag">Model Optimization</span>
+								<span class="tech-tag">Edge Computing</span>
+							</div>
+						</article>
+						<article class="project-card">
+							<header>
+								<h3>Hackathon Winner - AI Innovation Challenge</h3>
+							</header>
+							<p>
+								Led a team to victory in a competitive hackathon, developing an innovative AI solution that 
+								combines natural language processing with real-time data processing. The project demonstrated 
+								excellence in both technical implementation and practical application.
+							</p>
+							<div class="tech-tags">
+								<span class="tech-tag">Full-Stack</span>
+								<span class="tech-tag">NLP</span>
+								<span class="tech-tag">React</span>
+								<span class="tech-tag">Node.js</span>
+							</div>
+						</article>
+						<article class="project-card">
+							<header>
+								<h3>Synthetic Model Generation</h3>
+							</header>
+							<p>
+								Built a scalable system for generating and training 10,000+ synthetic models for data augmentation 
+								and testing purposes. Implemented distributed training pipelines and automated model evaluation 
+								frameworks to support large-scale ML research workflows.
+							</p>
+							<div class="tech-tags">
+								<span class="tech-tag">Distributed Systems</span>
+								<span class="tech-tag">MLOps</span>
+								<span class="tech-tag">Kubernetes</span>
+								<span class="tech-tag">Data Engineering</span>
+							</div>
+						</article>
+					</div>
+				</section>
+
+				<!-- Quick Stats Section -->
+				<section class="stats-section">
+					<div class="stats-grid">
+						<div class="stat-item">
+							<span class="stat-number">8x</span>
+							<span class="stat-label">Inference Speedup</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-number">56%</span>
+							<span class="stat-label">Annualized Returns</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-number">10k+</span>
+							<span class="stat-label">Synthetic Models</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-number">5</span>
+							<span class="stat-label">Hackathon Wins</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-number">Top 0.5%</span>
+							<span class="stat-label">ISACA Award</span>
+						</div>
+					</div>
+				</section>
+
+				<!-- Recent Writing Section -->
+				<section id="research" class="writing-section">
+					<div class="section-header">
+						<h2>Recent Writing</h2>
+						<p>Latest research and insights</p>
+					</div>
+					<article class="writing-item">
+						<h3>Language Generation using Discrete Time Markov Chains</h3>
+						<p>
+							Exploring the application of discrete time Markov chains in natural language generation, 
+							analyzing transition probabilities and state space optimization for improved text generation 
+							quality and computational efficiency.
 						</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
+					</article>
+					<article class="writing-item">
+						<h3>Reinforcement Learning in Non-Stationary Environments</h3>
+						<p>
+							Investigating adaptive RL algorithms for portfolio optimization in non-stationary financial markets. 
+							This research focuses on developing robust strategies that can adapt to changing market regimes 
+							and maintain performance under uncertainty.
+						</p>
+					</article>
+					<div style="text-align: center; margin-top: 2rem;">
+						<a href="https://blog.shhreya-anand.github.io" target="_blank" class="button large">Read Full Blog</a>
 					</div>
-
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Shhreya Anand</a>
-					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li><a href="generic.html">About</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://linkedin.com/in/shhreyaanand/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/Shhreya-Anand" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2><a href="#">My name is Shhreya Anand</a></h2>
-									<p>I'm a Machine Learning engineer, full-stack developer, on the Executive board of 3 competitive clubs at University,<br />
-									but more importantly, I'm incredibly curious and passionate about technology.<br />
-									</p>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Check it out!</a></li>
-								</ul>
-							</article>
-
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Check it out!</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section>
-
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://linkedin.com/in/shhreyaanand/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									<li><a href="https://github.com/Shhreya-Anand" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Shhreya Anand</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+				</section>
 
 			</div>
 
+			<!-- Footer -->
+			<footer id="footer">
+				<section style="text-align: center; padding: 3rem 2rem;">
+					<h2 style="margin-bottom: 2rem;">Get In Touch</h2>
+					<div class="social-links-footer">
+						<a href="https://linkedin.com/in/shhreyaanand/" class="icon brands fa-linkedin" target="_blank" title="LinkedIn">
+							<span class="label">LinkedIn</span>
+						</a>
+						<a href="https://github.com/Shhreya-Anand" class="icon brands fa-github" target="_blank" title="GitHub">
+							<span class="label">GitHub</span>
+						</a>
+						<a href="mailto:contact@shhreya-anand.com" class="icon solid fa-envelope" title="Email">
+							<span class="label">Email</span>
+						</a>
+					</div>
+					<a href="mailto:contact@shhreya-anand.com" class="email-link" id="contact">
+						<i class="icon solid fa-envelope"></i>
+						contact@shhreya-anand.com
+					</a>
+				</section>
+			</footer>
+
+			<!-- Copyright -->
+			<div id="copyright">
+				<ul><li>&copy; Shhreya Anand</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+			</div>
+
+		</div>
+
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			// Smooth scrolling for anchor links
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				});
+			});
+		</script>
 
 	</body>
 </html>
