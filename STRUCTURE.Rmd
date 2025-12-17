@@ -1,0 +1,246 @@
+---
+title: "Website Structure Documentation"
+author: "Shhreya Anand"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+# Website Structure and Deployment Guide
+
+This document explains the structure of the personal portfolio website and provides instructions for deploying it to GitHub Pages at `shhreya-anand.github.io`.
+
+## Repository Structure
+
+The website follows a standard HTML/CSS/JavaScript structure based on the Massively template from HTML5 UP.
+
+### Directory Structure
+
+```
+Shhreya-website/
+├── index.html          # Main homepage
+├── generic.html        # About page
+├── elements.html       # Elements reference page
+├── assets/
+│   ├── css/           # Stylesheets
+│   │   ├── main.css   # Main stylesheet
+│   │   └── noscript.css
+│   ├── js/            # JavaScript files
+│   │   ├── main.js    # Main JavaScript
+│   │   ├── jquery.min.js
+│   │   └── ...        # Other JS dependencies
+│   ├── sass/          # SASS source files (for development)
+│   └── webfonts/      # Font Awesome fonts
+├── images/            # Image assets
+│   ├── bg.jpg
+│   ├── overlay.png
+│   └── pic01.jpg - pic09.jpg
+├── LICENSE.txt
+└── README.txt
+```
+
+## Page Locations
+
+### Main Pages
+
+1. **`index.html`** - Homepage
+   - Location: Root of `Shhreya-website/` directory
+   - Purpose: Main landing page with portfolio introduction
+   - Features:
+     - Hero section with introduction
+     - Featured post section
+     - Portfolio/blog post grid
+     - Contact form in footer
+   - Navigation: Links to Home (active), About, Elements
+
+2. **`generic.html`** - About Page
+   - Location: Root of `Shhreya-website/` directory
+   - Purpose: Generic content page (can be used for About, Blog posts, etc.)
+   - Features:
+     - Full-width content area
+     - Image support
+     - Contact form in footer
+   - Navigation: Links to Home, About (active), Elements
+
+3. **`elements.html`** - Elements Reference
+   - Location: Root of `Shhreya-website/` directory
+   - Purpose: Reference page showing all available HTML elements and styles
+   - Features:
+     - Comprehensive element showcase
+     - Form elements
+     - Typography examples
+     - Button styles
+   - Navigation: Links to Home, About, Elements (active)
+
+## Asset Locations
+
+### Stylesheets
+- **Main CSS**: `assets/css/main.css`
+- **NoScript CSS**: `assets/css/noscript.css` (for users with JavaScript disabled)
+
+### JavaScript Files
+All located in `assets/js/`:
+- `main.js` - Main site functionality
+- `jquery.min.js` - jQuery library
+- `jquery.scrollex.min.js` - Scroll effects
+- `jquery.scrolly.min.js` - Smooth scrolling
+- `browser.min.js` - Browser detection
+- `breakpoints.min.js` - Responsive breakpoints
+- `util.js` - Utility functions
+
+### Images
+All images are stored in the `images/` directory:
+- Background images: `bg.jpg`, `overlay.png`
+- Portfolio images: `pic01.jpg` through `pic09.jpg`
+
+## Navigation Structure
+
+The navigation is consistent across all pages:
+
+### Header Logo
+- Text: "Shhreya Anand"
+- Links to: `index.html`
+
+### Main Navigation Links
+- **Home** → `index.html`
+- **About** → `generic.html`
+- **Elements** → `elements.html`
+
+### Social Media Icons (Header)
+- LinkedIn: `https://linkedin.com/in/shhreyaanand/`
+- GitHub: `https://github.com/Shhreya-Anand`
+
+## GitHub Pages Deployment
+
+### Current Structure Issue
+
+**IMPORTANT**: For GitHub Pages to work correctly, the website files need to be in the **root** of the repository named `Shhreya-Anand.github.io`, not in a subdirectory.
+
+Currently, files are located at:
+```
+Shhreya-Anand.github.io/Shhreya-website/
+```
+
+They should be moved to:
+```
+Shhreya-Anand.github.io/  (root level)
+```
+
+### Deployment Steps
+
+1. **Move Files to Repository Root**
+   - Copy all files from `Shhreya-website/` to the root of `Shhreya-Anand.github.io/`
+   - The repository structure should be:
+     ```
+     Shhreya-Anand.github.io/
+     ├── index.html
+     ├── generic.html
+     ├── elements.html
+     ├── assets/
+     ├── images/
+     └── ...
+     ```
+
+2. **Initialize Git Repository** (if not already done)
+   ```bash
+   cd Shhreya-Anand.github.io
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+3. **Connect to GitHub**
+   ```bash
+   git remote add origin https://github.com/Shhreya-Anand/Shhreya-Anand.github.io.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+4. **Enable GitHub Pages**
+   - Go to repository settings on GitHub
+   - Navigate to "Pages" section
+   - Select source: "Deploy from a branch"
+   - Choose branch: `main`
+   - Select folder: `/ (root)`
+   - Click "Save"
+
+5. **Access Your Site**
+   - Your site will be available at: `https://shhreya-anand.github.io`
+   - It may take a few minutes for changes to propagate
+
+### Alternative: Using a Subdirectory
+
+If you prefer to keep files in the `Shhreya-website/` subdirectory:
+
+1. In GitHub Pages settings, set the source to `/docs` folder
+2. Create a `docs/` folder in the root
+3. Move all website files to `docs/`
+4. Update the site URL: `https://shhreya-anand.github.io/Shhreya-website/`
+
+**Note**: This is not recommended as it adds an extra path to your URL.
+
+## Recent Fixes Applied
+
+The following issues have been fixed:
+
+1. ✅ **Navigation Links**: Added missing navigation links in `index.html` to connect all pages
+2. ✅ **Social Media Links**: Updated social media links in `generic.html` and `elements.html` to match `index.html`
+3. ✅ **Logo Text**: Changed "Massively" to "Shhreya Anand" across all pages
+4. ✅ **Navigation Labels**: Updated navigation labels from "This is Massively" to "Home", "Generic Page" to "About", etc.
+5. ✅ **Copyright**: Updated copyright from "Untitled" to "Shhreya Anand"
+6. ✅ **Footer Social Links**: Updated footer social links to use actual LinkedIn and GitHub URLs
+
+## Customization Notes
+
+### To Update Content
+
+1. **Homepage**: Edit `index.html`
+   - Update the intro section (lines 21-26)
+   - Modify the featured post section (lines 52-63)
+   - Update portfolio/blog posts (lines 66-137)
+
+2. **About Page**: Edit `generic.html`
+   - Update the header section (lines 45-52)
+   - Modify the content paragraphs (lines 54-55)
+
+3. **Images**: Replace images in `images/` directory
+   - Update image references in HTML files
+   - Recommended sizes: 1200x600px for featured images
+
+### To Update Styling
+
+- **Quick changes**: Edit `assets/css/main.css`
+- **Advanced changes**: Modify SASS files in `assets/sass/` and recompile
+
+### To Update Contact Information
+
+Edit the footer section in any HTML file (around lines 179-202):
+- Update address
+- Update phone number
+- Update email
+- Modify social media links
+
+## Browser Compatibility
+
+This template supports:
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Responsive design for mobile devices
+- Graceful degradation for older browsers
+
+## License
+
+Template design by HTML5 UP (html5up.net)
+License: CCA 3.0 (Creative Commons Attribution 3.0)
+
+---
+
+**Last Updated**: `r Sys.Date()`
+**Repository**: https://github.com/Shhreya-Anand/Shhreya-Anand.github.io
+**Live Site**: https://shhreya-anand.github.io (after deployment)
+
