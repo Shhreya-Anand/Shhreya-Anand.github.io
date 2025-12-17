@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
-# Website Structure and Deployment Guide
+# Website Structure and Deployment: //how to:
 
 This document explains the structure of the personal portfolio website and provides instructions for deploying it to GitHub Pages at `shhreya-anand.github.io`.
 
